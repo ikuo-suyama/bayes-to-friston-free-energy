@@ -332,7 +332,7 @@ $$
 したがって：
 
 $$
-\mathcal{F}(q)\;\ge\;-\log p(x)
+\mathcal{F}(q) \ge -\log p(x)
 $$
 
 これは偶然の不等式ではなく、
