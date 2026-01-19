@@ -702,4 +702,8 @@ $$
 
 改めて、本記事はChatGPT 5.2との対話を通じた学習の記録です。誤りや改善点があればぜひご指摘ください。議論や質問も歓迎します。
 
-（最終更新：2026-01-15）
+（初版：2026-01-15）
+
+### 更新履歴
+<!-- CHANGELOG_MARKER -->
+- 2026-01-19: [生成仮定→生成過程のtypo修正](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/4)
