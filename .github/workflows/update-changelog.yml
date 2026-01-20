@@ -37,8 +37,8 @@ jobs:
           # Create the new entry
           NEW_ENTRY="- $FORMATTED_DATE: [$ESCAPED_TITLE]($ESCAPED_URL)"
 
-          # Insert the new entry after "### 更新履歴"
-          sed -i "/^### 更新履歴$/a $NEW_ENTRY" "$ARTICLE"
+          # Insert the new entry after "## 更新履歴"
+          sed -i "/^## 更新履歴$/a $NEW_ENTRY" "$ARTICLE"
 
       - name: Commit and push changes
         run: |
