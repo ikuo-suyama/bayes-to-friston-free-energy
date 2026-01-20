@@ -759,4 +759,5 @@ $$
 （初版：2026-01-15）
 
 ### 更新履歴
+- 2026-01-20: [fix: 尤度とエビデンスの対比を段階的に説明](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/9)
 - 2026-01-19: [生成仮定→生成過程のtypo修正](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/4)
