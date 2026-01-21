@@ -25,8 +25,6 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           MERGE_DATE: ${{ github.event.pull_request.merged_at }}
         run: |
-          ARTICLE="ベイズの定理からFristonの自由エネルギー原理へ.md"
-
           # Format the date (YYYY-MM-DD)
           FORMATTED_DATE=$(date -d "$MERGE_DATE" '+%Y-%m-%d' 2>/dev/null || date -j -f "%Y-%m-%dT%H:%M:%SZ" "$MERGE_DATE" '+%Y-%m-%d' 2>/dev/null || echo "$MERGE_DATE" | cut -d'T' -f1)
 
@@ -37,13 +35,20 @@ jobs:
           # Create the new entry
           NEW_ENTRY="- $FORMATTED_DATE: [$ESCAPED_TITLE]($ESCAPED_URL)"
 
-          # Insert the new entry after "## 更新履歴"
-          sed -i "/^## 更新履歴$/a $NEW_ENTRY" "$ARTICLE"
+          # Get all .md files changed in this PR
+          git diff --name-only origin/main...HEAD | grep '\.md$' | while read -r file; do
+            # Check if the file has a changelog section
+            if [ -f "$file" ] && grep -q "^## 更新履歴$" "$file"; then
+              echo "Updating changelog in: $file"
+              # Insert the new entry after "## 更新履歴"
+              sed -i "/^## 更新履歴$/a $NEW_ENTRY" "$file"
+              git add "$file"
+            fi
+          done
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "ベイズの定理からFristonの自由エネルギー原理へ.md"
           git diff --staged --quiet || git commit -m "docs: update changelog for PR #${{ github.event.pull_request.number }} [skip changelog]"
           git push
