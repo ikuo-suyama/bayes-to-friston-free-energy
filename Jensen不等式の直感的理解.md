@@ -223,9 +223,9 @@ $$
 
 ## 出典
 
-- Jensen, J. L. W. V. (1906), _Sur les fonctions convexes_（一次文献）
-- Rockafellar, _Convex Analysis_
-- Boyd & Vandenberghe, _Convex Optimization_
+- Jensen, J. L. W. V. (1906), [_Sur les fonctions convexes_](https://link.springer.com/article/10.1007/BF02418571)（一次文献）
+- Rockafellar, R. T. (1970), [_Convex Analysis_](https://press.princeton.edu/books/paperback/9780691015866/convex-analysis), Princeton University Press
+- Boyd, S. & Vandenberghe, L. (2004), [_Convex Optimization_](https://web.stanford.edu/~boyd/cvxbook/), Cambridge University Press（著者サイトで無料公開）
 
 ## 更新履歴
 
