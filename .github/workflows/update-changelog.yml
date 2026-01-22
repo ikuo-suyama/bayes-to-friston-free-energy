@@ -35,8 +35,10 @@ jobs:
           # Create the new entry
           NEW_ENTRY="- $FORMATTED_DATE: [$ESCAPED_TITLE]($ESCAPED_URL)"
 
-          # Get all .md files that were modified (not added) in this PR
-          git diff --name-only --diff-filter=M origin/main...HEAD | grep '\.md$' | while read -r file; do
+          # Get all .md files that were modified (not added) in the merge commit
+          # HEAD^1 is the first parent (main branch before merge)
+          # HEAD is the merge commit
+          git diff --name-only --diff-filter=M HEAD^1 HEAD | grep '\.md$' | while read -r file; do
             # Check if the file has a changelog section
             if [ -f "$file" ] && grep -q "^## 更新履歴$" "$file"; then
               echo "Updating changelog in: $file"
