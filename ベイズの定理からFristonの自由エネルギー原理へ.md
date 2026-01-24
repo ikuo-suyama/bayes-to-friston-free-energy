@@ -834,6 +834,7 @@ $$
 
 
 ## 更新履歴
+- 2026-01-24: [統計力学との対応セクションの改善](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/17)
 - 2026-01-22: [セクション5に最適化の同値性を明示的に追加](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/15)
 - 2026-01-21: [feat: 周辺尤度と正規化定数の関係を付録2として追加](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/12)
 - 2026-01-20: [fix: 尤度とエビデンスの対比を段階的に説明](https://github.com/ikuo-suyama/bayes-to-friston-free-energy/pull/9)

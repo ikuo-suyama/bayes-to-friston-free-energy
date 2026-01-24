@@ -35,6 +35,9 @@ jobs:
           # Create the new entry
           NEW_ENTRY="- $FORMATTED_DATE: [$ESCAPED_TITLE]($ESCAPED_URL)"
 
+          # Configure git to not quote non-ASCII characters in filenames
+          git config core.quotePath false
+
           # Get all .md files that were modified (not added) in the merge commit
           # HEAD^1 is the first parent (main branch before merge)
           # HEAD is the merge commit
