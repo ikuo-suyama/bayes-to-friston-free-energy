@@ -387,13 +387,13 @@ $$
 統計力学（Gibbs）：
 
 $$
-F[q] = \mathbb{E}q[E(s)] - TS[q] = F{\text{eq}} + T\mathrm{KL}(q|p)
+F[q] = \mathbb{E}_q[E(s)] - TS[q] = -T\log Z + T\mathrm{KL}(q\|p)
 $$
 
 ベイズ変分推論：
 
 $$
-\mathcal{F}[q] = \mathbb{E}_q[-\log p(x,\theta)] + \mathbb{E}_q[\log q] = -\log p(x) + \mathrm{KL}(q|p)
+\mathcal{F}[q] = \mathbb{E}_q[-\log p(x,\theta)] + \mathbb{E}_q[\log q] = -\log p(x) + \mathrm{KL}(q\|p)
 $$
 
 - 統計力学の「状態 $${s}$$」 ↔ ベイズの「潜在変数 $${\theta}$$」
@@ -412,13 +412,7 @@ $$
 
 直感的には「エネルギーが低い状態ほど起こりやすい」と思いたくなるが、実際にはそれだけではない。
 
-ボルツマン分布は：
-
-$$
-p(s) = \frac{1}{Z} e^{-\beta E(s)}, \quad \beta=\frac{1}{T}
-$$
-
-ここで重要なのは：
+系で重要なのは：
 
 - 低エネルギー状態でも**状態の数が少なければあまり起こらない**
 - 多少エネルギーが高くても**状態数（エントロピー）が多ければ頻繁に起こる**
@@ -434,6 +428,20 @@ F[q] = \mathbb{E}_q[E(s)] - T S[q]
 $$
 
 であり、自由エネルギーを最小にする分布が、実際に観測される分布になる。
+
+この最小化問題を、正規化条件 $${{ \int q(s)\mathrm{d}s = 1}}$$ と平均エネルギー固定 $${{ \mathbb{E}_q[E(s)] = U}}$$ の制約のもとで解く。ラグランジュ関数は：
+
+$$
+L[q] = -S[q] + \alpha\left(\int q(s)\mathrm{d}s - 1\right) + \beta\left(\mathbb{E}_q[E(s)] - U\right)
+$$
+
+ここで $${{S[q] = -\int q(s)\log q(s)\mathrm{d}s}}$$ はエントロピーである。この変分問題を解くと、解として**ボルツマン分布**が得られる：
+
+$$
+p(s) = \frac{1}{Z} e^{-\beta E(s)}, \quad \beta=\frac{1}{T}
+$$
+
+ここで $${{Z = \int e^{-\beta E(s)}\mathrm{d}s}}$$ は分配関数であり、ボルツマン分布の正規化項である。また $${{-T\log Z}}$$ は平衡自由エネルギー（$${{q = p}}$$ のときの最小自由エネルギー）を表す。
 
 ### ベイズ変分推論：なぜ「尤度最大」だけでは足りないのか
 
