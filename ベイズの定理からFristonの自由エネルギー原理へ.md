@@ -387,13 +387,13 @@ $$
 統計力学（Gibbs）：
 
 $$
-F[q] = \mathbb{E}q[E(s)] - TS[q] = F{\text{eq}} + T\mathrm{KL}(q|p)
+F[q] = \mathbb{E}_q[E(s)] - TS[q] = -T\log Z + T\mathrm{KL}(q\|p)
 $$
 
 ベイズ変分推論：
 
 $$
-\mathcal{F}[q] = \mathbb{E}_q[-\log p(x,\theta)] + \mathbb{E}_q[\log q] = -\log p(x) + \mathrm{KL}(q|p)
+\mathcal{F}[q] = \mathbb{E}_q[-\log p(x,\theta)] + \mathbb{E}_q[\log q] = -\log p(x) + \mathrm{KL}(q\|p)
 $$
 
 - 統計力学の「状態 $${s}$$」 ↔ ベイズの「潜在変数 $${\theta}$$」
@@ -418,7 +418,9 @@ $$
 p(s) = \frac{1}{Z} e^{-\beta E(s)}, \quad \beta=\frac{1}{T}
 $$
 
-ここで重要なのは：
+ここで $${{Z = \int e^{-\beta E(s)}\mathrm{d}s}}$$ は分配関数であり、ボルツマン分布の正規化項である。また $${{-T\log Z}}$$ は平衡自由エネルギー（$${{q = p}}$$ のときの最小自由エネルギー）を表す。
+
+ボルツマン分布で重要なのは：
 
 - 低エネルギー状態でも**状態の数が少なければあまり起こらない**
 - 多少エネルギーが高くても**状態数（エントロピー）が多ければ頻繁に起こる**
